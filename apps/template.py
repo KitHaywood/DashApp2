@@ -2,8 +2,7 @@ import dash
 import dash_core_components as dcc 
 import dash_html_components as html 
 
-
-def app_layout():
+def app_layout(good_ticker_dict,degree_options):
     return html.Div(children=[
         html.H1(children='Test Yahoo Finance Fetcher',
         style={'textAlign':'center'}),
