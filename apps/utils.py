@@ -66,4 +66,3 @@ class SmaCross(Strategy):
         elif crossover(self.sma2, self.sma1):
             self.position.close()
             self.sell()
-

@@ -24,7 +24,8 @@ def app_layout(good_ticker_dict,degree_options):
         ],style=dict(display='flex')),
             html.Div([
                 html.Div([
-                    dcc.Graph(id='my_fig')],
+                    dcc.Graph(id='my_fig'),
+                    dcc.Loading(children=[html.Div(id='my_fig_a')],id='my_fig_loading',type='default')],
                     className='six columns'),
                 html.Div([
                     dcc.Graph(id='my_fig2')],
