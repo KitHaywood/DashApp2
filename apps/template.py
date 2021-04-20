@@ -24,23 +24,22 @@ def app_layout(good_ticker_dict,degree_options):
         ],style=dict(display='flex')),
             html.Div([
                 html.Div([
-                    dcc.Graph(id='my_fig'),
-                    dcc.Loading(children=[html.Div(id='my_fig_a')],id='my_fig_loading',type='default')],
+                    dcc.Loading(children=[html.Div(dcc.Graph(id='my_fig'))],id='my_fig_loading1',type='default')],
                     className='six columns'),
                 html.Div([
-                    dcc.Graph(id='my_fig2')],
+                    dcc.Loading(children=[html.Div(dcc.Graph(id='my_fig2'))],id='my_fig_loading2',type='default')],
                     className='six columns'),
                     ],className='row'),
             html.Div([
                 html.Div([
-                    dcc.Graph(id='my_fig3')],
+                    dcc.Loading(children=[html.Div(dcc.Graph(id='my_fig3'))],id='my_fig_loading3',type='default')],
                     className='six columns'),
                 html.Div([
-                    dcc.Graph(id='my_fig4')],
+                    dcc.Loading(children=[html.Div(dcc.Graph(id='my_fig4'))],id='my_fig_loading4',type='default')],
                     className='six columns'),
                     ],className='row'),
                 html.Div([html.H3(['SMA Cross'])]),
-                dcc.Graph(id='my_fig5'),
+                dcc.Loading(children=[html.Div(dcc.Graph(id='my_fig5'))],id='my_fig_loading5',type='default'),
                 html.H5('Line Fit Co-Efficients'),
                 html.P(id='coefs'),
                 html.H5('SMA Cross Optimal'),
