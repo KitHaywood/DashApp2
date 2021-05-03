@@ -29,9 +29,10 @@ def get_ticker_data_2(ticker):
                                                         30)                                               
         if data is not None:
             df = pd.DataFrame.from_dict(data)
-            df['timestamp'] = [dt.datetime.fromtimestamp(x/1000) for x in df['timestamp']]
+            df['new_timestamp'] = [dt.datetime.fromtimestamp(x/1000) for x in df['timestamp']]
+            print(df.columns)
             df = df.set_index('timestamp')
-            df.columns = ['Open','High','Low','Close','Volume']
+            df.columns = ['Open','High','Low','Close','Volume','new_timestamp']
             return df
         else:
             print('No Data from YahooFinance')     
@@ -50,15 +51,19 @@ def SMA(values, n):
     """
     return pd.Series(values).rolling(n).mean()
 
+def num_trades(values):
+    return pd.Series([x for x in range(len(values))])
 class SmaCross(Strategy):
     """Define the two MA lags as *class variables*
-    for later optimization"""
+    for later optinmization"""
     n1 = 10
     n2 = 20
+
     def init(self):
         self.sma1 = self.I(SMA, self.data.Close, self.n1)
         self.sma2 = self.I(SMA, self.data.Close, self.n2)
-    
+        # print(self.data)
+
     def next(self):
         if crossover(self.sma1, self.sma2):
             self.position.close()
