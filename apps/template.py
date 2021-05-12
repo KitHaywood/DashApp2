@@ -32,14 +32,22 @@ def app_layout2(good_ticker_dict,degree_options,max_trades):
         ],style={'display':'flex','margin':'15px'}),
             html.Div([
                 html.Div([
+<<<<<<< HEAD
                     dcc.Loading(id='load_1',children=html.Div(dcc.Graph(id='my_fig')), type='default')],
                     className='six columns'),
                 html.Div([
                     dcc.Loading(id='load_2',children=html.Div(dcc.Graph(id='my_fig1')), type='default')],
+=======
+                    dcc.Loading(children=[html.Div(dcc.Graph(id='my_fig'))],id='my_fig_loading1',type='default')],
+                    className='six columns'),
+                html.Div([
+                    dcc.Loading(children=[html.Div(dcc.Graph(id='my_fig2'))],id='my_fig_loading2',type='default')],
+>>>>>>> 891a0c430e625af0d0191cc92d7ec067cb127780
                     className='six columns'),
                     ],className='row'),
             html.Div([
                 html.Div([
+<<<<<<< HEAD
                     dcc.Loading(id='load_3',children=html.Div(dcc.Graph(id='my_fig3')), type='default')],
                     className='six columns'),
                 html.Div([
@@ -145,4 +153,18 @@ def app_layout2(good_ticker_dict,degree_options,max_trades):
                 html.Div(style={
                     'margin':'15px',
                 },children=['hello'])
+=======
+                    dcc.Loading(children=[html.Div(dcc.Graph(id='my_fig3'))],id='my_fig_loading3',type='default')],
+                    className='six columns'),
+                html.Div([
+                    dcc.Loading(children=[html.Div(dcc.Graph(id='my_fig4'))],id='my_fig_loading4',type='default')],
+                    className='six columns'),
+                    ],className='row'),
+                html.Div([html.H3(['SMA Cross'])]),
+                dcc.Loading(children=[html.Div(dcc.Graph(id='my_fig5'))],id='my_fig_loading5',type='default'),
+                html.H5('Line Fit Co-Efficients'),
+                html.P(id='coefs'),
+                html.H5('SMA Cross Optimal'),
+                html.P(id='smac')
+>>>>>>> 891a0c430e625af0d0191cc92d7ec067cb127780
     ])
