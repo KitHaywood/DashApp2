@@ -10,6 +10,7 @@ from backtesting import Strategy
 from backtesting import Backtest
 from backtesting.lib import crossover
 
+
 def get_ticker_dict():
     """returns dict of ticker prepared for dropdown"""
     url = 'https://en.wikipedia.org/wiki/FTSE_100_Index#cite_note-13'
@@ -30,9 +31,10 @@ def get_ticker_data_2(ticker):
         if data is not None:
             df = pd.DataFrame.from_dict(data)
             df['new_timestamp'] = [dt.datetime.fromtimestamp(x/1000) for x in df['timestamp']]
-            print(df.columns)
             df = df.set_index('timestamp')
             df.columns = ['Open','High','Low','Close','Volume','new_timestamp']
+            if df.isnull().values.any():
+                df = df.interpolate(method='linear',axis=0)
             return df
         else:
             print('No Data from YahooFinance')     
